@@ -61,3 +61,48 @@ func PostOrderNoRecursion(t *tree.BinaryTree) (values []interface{}) {
 	return
 }
 
+func PreOrderRecursion(t *tree.BinaryTree) (values []interface{}) {
+	var orderFunc func(*tree.BinaryTree)
+	orderFunc = func(bt *tree.BinaryTree) {
+		values = append(values, bt.Value)
+		if bt.Left != nil {
+			orderFunc(bt.Left)
+		}
+		if bt.Right != nil {
+			orderFunc(bt.Right)
+		}
+	}
+	orderFunc(t)
+	return
+}
+
+func InOrderRecursion(t *tree.BinaryTree) (values []interface{}) {
+	var orderFunc func(*tree.BinaryTree)
+	orderFunc = func(bt *tree.BinaryTree) {
+		if bt.Left != nil {
+			orderFunc(bt.Left)
+		}
+		values = append(values, bt.Value)
+		if bt.Right != nil {
+			orderFunc(bt.Right)
+		}
+	}
+	orderFunc(t)
+	return
+}
+
+func PostOrderRecursion(t *tree.BinaryTree) (values []interface{}) {
+	var orderFunc func(*tree.BinaryTree)
+	orderFunc = func(bt *tree.BinaryTree) {
+		if bt.Left != nil {
+			orderFunc(bt.Left)
+		}
+		if bt.Right != nil {
+			orderFunc(bt.Right)
+		}
+		values = append(values, bt.Value)
+	}
+	orderFunc(t)
+	return
+}
+

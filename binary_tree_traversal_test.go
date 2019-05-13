@@ -119,3 +119,81 @@ func TestPostOrderNoRecursion(t *testing.T) {
 	}
 }
 
+func TestPreOrderRecursion(t *testing.T) {
+	type args struct {
+		t *tree.BinaryTree
+	}
+	tests := []struct {
+		name       string
+		args       args
+		wantValues []interface{}
+	}{
+		{
+			"Test case 1",
+			args{
+				t: &treeRoot,
+			},
+			[]interface{}{10, 6, 4, 8, 14, 12, 16},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if gotValues := PreOrderRecursion(tt.args.t); !reflect.DeepEqual(gotValues, tt.wantValues) {
+				t.Errorf("PreOrderRecursion() = %v, want %v", gotValues, tt.wantValues)
+			}
+		})
+	}
+}
+
+func TestInOrderRecursion(t *testing.T) {
+	type args struct {
+		t *tree.BinaryTree
+	}
+	tests := []struct {
+		name       string
+		args       args
+		wantValues []interface{}
+	}{
+		{
+			"Test case 1",
+			args{
+				t: &treeRoot,
+			},
+			[]interface{}{4, 6, 8, 10, 12, 14, 16},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if gotValues := InOrderRecursion(tt.args.t); !reflect.DeepEqual(gotValues, tt.wantValues) {
+				t.Errorf("InOrderRecursion() = %v, want %v", gotValues, tt.wantValues)
+			}
+		})
+	}
+}
+
+func TestPostOrderRecursion(t *testing.T) {
+	type args struct {
+		t *tree.BinaryTree
+	}
+	tests := []struct {
+		name       string
+		args       args
+		wantValues []interface{}
+	}{
+		{
+			"Test case 1",
+			args{
+				t: &treeRoot,
+			},
+			[]interface{}{4, 8, 6, 12, 16, 14, 10},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if gotValues := PostOrderRecursion(tt.args.t); !reflect.DeepEqual(gotValues, tt.wantValues) {
+				t.Errorf("PostOrderRecursion() = %v, want %v", gotValues, tt.wantValues)
+			}
+		})
+	}
+}
+
