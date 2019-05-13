@@ -106,3 +106,18 @@ func PostOrderRecursion(t *tree.BinaryTree) (values []interface{}) {
 	return
 }
 
+func BreadthFirst(t *tree.BinaryTree) (values []interface{}) {
+	s := []*tree.BinaryTree{t}
+	for len(s) != 0 {
+		values = append(values, s[0].Value)
+		if s[0].Left != nil {
+			s = append(s, s[0].Left)
+		}
+		if s[0].Right != nil {
+			s = append(s, s[0].Right)
+		}
+		s = s[1:]
+	}
+	return
+}
+

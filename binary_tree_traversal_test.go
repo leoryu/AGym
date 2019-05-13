@@ -197,3 +197,29 @@ func TestPostOrderRecursion(t *testing.T) {
 	}
 }
 
+func TestBreadthFirst(t *testing.T) {
+	type args struct {
+		t *tree.BinaryTree
+	}
+	tests := []struct {
+		name       string
+		args       args
+		wantValues []interface{}
+	}{
+		{
+			"Test case 1",
+			args{
+				t: &treeRoot,
+			},
+			[]interface{}{10, 6, 14, 4, 8, 12, 16},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if gotValues := BreadthFirst(tt.args.t); !reflect.DeepEqual(gotValues, tt.wantValues) {
+				t.Errorf("BreadthFirst() = %v, want %v", gotValues, tt.wantValues)
+			}
+		})
+	}
+}
+
