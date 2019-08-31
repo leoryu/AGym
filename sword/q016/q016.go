@@ -1,4 +1,4 @@
-package q015
+package q016
 
 type NodeList struct {
 	Value    int
